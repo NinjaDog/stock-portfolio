@@ -1,0 +1,8 @@
+<%= render 'history' %>
+
+<h3>Percent Change</h3>
+<p>
+  <%= number_to_percentage(@percent_change, precision: 2) %>
+</p>
+
+<%= link_to "Stock Detail", stock_path(params[:symbol]) %>

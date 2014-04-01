@@ -1,0 +1,25 @@
+<h1><%= @stock.name %> (<%= @stock.symbol %>)</h1>
+<h2><%= @stock.stock_exchange %></h2>
+
+<h3>Price</h3>
+<p>
+  <%= number_to_currency(@stock.last_trade_price_only) %> (<%= @stock.percent_change %>)
+</p>
+
+<h3>Open</h3>
+<p>
+  <%= number_to_currency(@stock.open) %>
+</p>
+
+<h3>Previous Open</h3>
+<p>
+  <%= number_to_currency(@stock.previous_close) %>
+</p>
+
+<div id="history-form" class="stock-history" style="display:none;">
+  <%= render 'history' %>
+</div>
+
+<%= link_to_modal "Historic Price", "#history-form", :class=>"button" %>
+
+<%= link_to "Year-To-Date History", history_path(@stock.symbol, Time.now.strftime("%Y-01-01"), Time.now.strftime("%Y-%m-%d")) %>
